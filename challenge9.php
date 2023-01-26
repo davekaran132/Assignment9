@@ -96,20 +96,20 @@ $database = new Database('127.0.0.1', 'root', 'root', 'CHALLENGES','3306');
             <th>Course#</th>
             <th>Letter Grade</th>
         </tr>
-        <tr>
+        
             <?php
             $conn =  $database->connect();
             $sql = 'SELECT STUDENTS.FirstName, STUDENTS.SecondName, COURSES.CourseName, GRADES.Grade FROM STUDENTS JOIN GRADES ON STUDENTS.StudentId = GRADES.StudentID JOIN COURSES ON COURSES.CourseId = GRADES.CourseID;';
             $result = $conn->query($sql);
             while($row = $result->fetch_assoc()){
-                echo'<td id="first_name_cell">'.$row['FirstName'].'</td>
+                echo'<tr><td id="first_name_cell">'.$row['FirstName'].'</td>
                 <td id="last_name_cell">'.$row['SecondName'].'</td>
                 <td id="course_number_cell">'.$row['CourseName'].'</td>
-                <td id="final_grade_cell">'.$row['Grade'].'</td>';
+                <td id="final_grade_cell">'.$row['Grade'].'</td></tr>';
             };
             $conn->close();
             ?>
-        </tr>
+    
     </table>
     <button>Clear Text File</button>
     <script>
